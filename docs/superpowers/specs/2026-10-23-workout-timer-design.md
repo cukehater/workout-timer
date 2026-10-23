@@ -17,14 +17,14 @@
 
 ### 1.1 1차 범위
 
-설정 화면, 실행 화면, 타이머 엔진, beep 알림, localStorage 저장·복원, Screen Wake Lock, 음소거 토글.
+설정 화면, 실행 화면, 타이머 엔진, beep 알림, localStorage 저장·복원, Screen Wake Lock, 음소거 토글, GitHub Pages 자동 배포.
 
 ### 1.2 범위 밖
 
 - **영구 제외**: 회원 기능, 서버, 운동 기록 통계. 모든 동작은 클라이언트에서만.
-- **2차로 연기**: `navigator.vibrate` 진동, PWA(manifest + 서비스 워커), GitHub Actions 자동 배포, React Testing Library 기반 컴포넌트 테스트, 프리셋 저장, 음성 안내, 단계별 운동 이름.
+- **2차로 연기**: `navigator.vibrate` 진동, PWA(manifest + 서비스 워커), React Testing Library 기반 컴포넌트 테스트, 프리셋 저장, 음성 안내, 단계별 운동 이름.
 
-연기 근거: 진동은 iOS 미지원으로 반쪽 기능. PWA는 브라우저에서 이미 동작하며 서비스 워커는 캐시 무효화 비용이 붙는다. 배포는 코어 동작 확인 후 한 커밋으로 끝난다.
+연기 근거: 진동은 iOS 미지원으로 반쪽 기능. PWA는 브라우저에서 이미 동작하며 서비스 워커는 캐시 무효화 비용이 붙는다.
 
 ## 2. 기능 요구사항
 
@@ -273,3 +273,16 @@ Vitest만 사용한다. React Testing Library와 jsdom은 도입하지 않는다
 | 6 | `useBeep` · `useTimer` · `useLocalStorage` · `useWakeLock` | 브라우저 1회 실행, 소리·화면 유지 확인 |
 | 7 | `SettingsForm` · `NumberStepper` · `BeepSelector` · `Modal` | 입력·칩·요약·확인 다이얼로그 동작 |
 | 8 | `TimerDisplay` · `ProgressInfo` · `Controls` · `App` 전환 | 짧은 설정(prep 3 / work 3 / 1세트 2사이클)으로 완주 |
+
+## 11. 배포
+
+`main`에 push하면 GitHub Actions가 테스트 → 빌드 → GitHub Pages 배포를 수행한다. 결과 주소는 `https://cukehater.github.io/workout-timer/`.
+
+- `vite.config.ts`의 `base: '/workout-timer/'` — 프로젝트 페이지는 저장소명 하위 경로로 서비스되므로 asset 경로가 여기에 맞아야 한다. 개발 서버 주소도 같은 경로로 바뀐다.
+- `.github/workflows/deploy.yml` — `build` 잡이 `npm ci` → `npm test -- --run` → `npm run build` → 산출물 업로드, `deploy` 잡이 Pages에 배포. 테스트나 타입 검사가 실패하면 배포되지 않는다(`build` 스크립트에 `tsc --noEmit` 포함).
+- `test` 스크립트가 watch 모드(`vitest`)라 CI에서는 `--run`을 명시한다.
+- `concurrency: pages`로 배포가 겹치지 않게 한다.
+- `actions/configure-pages`는 쓰지 않는다. base를 직접 지정했고 `enablement`는 `repo` 스코프 PAT을 요구하는데, `deploy-pages`는 이것 없이 동작한다.
+- 라우터가 없어 404 폴백 처리는 불필요하다.
+
+**한 번만 필요한 수동 설정**: 저장소 Settings → Pages → Source를 "GitHub Actions"로 지정한다. 이 설정 전에 push하면 `deploy` 잡이 실패하며, 설정 후 Actions 탭에서 재실행하면 된다(`workflow_dispatch` 포함).
