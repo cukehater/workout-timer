@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_CONFIG, type TimerConfig } from './config';
-import { buildPhases, totalSeconds } from './buildPhases';
+import { buildPhases, remainingTotalSec, totalSeconds } from './buildPhases';
 
 const config = (over: Partial<TimerConfig> = {}): TimerConfig => ({ ...DEFAULT_CONFIG, ...over });
 const types = (c: TimerConfig) => buildPhases(c).map((p) => p.type);
@@ -77,5 +77,27 @@ describe('buildPhases', () => {
 describe('totalSeconds', () => {
   it('빈 배열은 0', () => {
     expect(totalSeconds([])).toBe(0);
+  });
+});
+
+describe('remainingTotalSec', () => {
+  const phases = buildPhases(
+    config({ prepSec: 10, workSec: 20, restSec: 10, sets: 2, cycles: 3, setRestSec: 60 }),
+  );
+
+  it('첫 단계 시작 시점은 전체 시간과 같다', () => {
+    expect(remainingTotalSec(phases, 0, 10_000)).toBe(230);
+  });
+
+  it('현재 단계의 남은 시간만 반영한다', () => {
+    expect(remainingTotalSec(phases, 0, 4_000)).toBe(224);
+  });
+
+  it('마지막 단계면 남은 시간이 전부', () => {
+    expect(remainingTotalSec(phases, phases.length - 1, 5_000)).toBe(5);
+  });
+
+  it('남은 시간이 음수면 0으로 본다', () => {
+    expect(remainingTotalSec(phases, phases.length - 1, -500)).toBe(0);
   });
 });

@@ -44,3 +44,9 @@ export function buildPhases(c: TimerConfig): Phase[] {
 export function totalSeconds(phases: Phase[]): number {
   return phases.reduce((sum, p) => sum + p.durationSec, 0);
 }
+
+/** 현재 단계의 남은 시간 + 뒤에 남은 단계 전체(초) */
+export function remainingTotalSec(phases: Phase[], index: number, remainingMs: number): number {
+  const later = totalSeconds(phases.slice(index + 1));
+  return later + Math.max(0, Math.ceil(remainingMs / 1000));
+}
