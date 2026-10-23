@@ -1,4 +1,4 @@
-import { PHASE_LABELS, type Phase, remainingTotalSec } from '../lib/buildPhases';
+import { type Phase, remainingTotalSec } from '../lib/buildPhases';
 import { formatMMSS } from '../lib/format';
 
 type Props = {
@@ -11,24 +11,24 @@ type Props = {
 
 export function ProgressInfo({ phases, index, remainingMs, sets, cycles }: Props) {
   const phase = phases[index];
-  const next = phases[index + 1];
 
   return (
-    <div className="progress">
-      <div className="progress__counts">
-        <span>
-          세트 <strong>{phase.set}</strong>/{sets}
+    <div className="meta">
+      <span className="meta__item">
+        세트 <b className="meta__value">{phase.set}</b>
+        <span className="meta__of">/{sets}</span>
+      </span>
+      {/* 준비·세트 휴식에는 사이클이 없다. 자리표시자를 보여주느니 항목을 뺀다 */}
+      {phase.cycle > 0 && (
+        <span className="meta__item">
+          사이클 <b className="meta__value">{phase.cycle}</b>
+          <span className="meta__of">/{cycles}</span>
         </span>
-        <span>
-          사이클 <strong>{phase.cycle || '-'}</strong>/{cycles}
-        </span>
-      </div>
-      <div className="progress__next">
-        {next ? `다음: ${PHASE_LABELS[next.type]} ${formatMMSS(next.durationSec)}` : '마지막 단계'}
-      </div>
-      <div className="progress__total">
-        전체 남은 시간 {formatMMSS(remainingTotalSec(phases, index, remainingMs))}
-      </div>
+      )}
+      <span className="meta__item">
+        종료까지{' '}
+        <b className="meta__value">{formatMMSS(remainingTotalSec(phases, index, remainingMs))}</b>
+      </span>
     </div>
   );
 }

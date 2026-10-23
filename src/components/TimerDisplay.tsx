@@ -1,24 +1,28 @@
 import { PHASE_LABELS, type Phase } from '../lib/buildPhases';
 import { formatMMSS } from '../lib/format';
 
-const RADIUS = 86;
+const RADIUS = 84;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 type Props = {
   phase: Phase;
   remainingMs: number;
+  running: boolean;
 };
 
-export function TimerDisplay({ phase, remainingMs }: Props) {
+export function TimerDisplay({ phase, remainingMs, running }: Props) {
   const totalMs = phase.durationSec * 1000;
   const elapsed = totalMs > 0 ? Math.min(1, Math.max(0, 1 - remainingMs / totalMs)) : 1;
+  const seconds = Math.ceil(remainingMs / 1000);
+  // 마지막 3초는 beep과 같은 박자로 숫자가 한 번 뛴다
+  const countdown = running && seconds > 0 && seconds <= 3;
 
   return (
-    <div className="display">
-      <svg className="display__ring" viewBox="0 0 200 200" aria-hidden="true">
-        <circle className="display__track" cx="100" cy="100" r={RADIUS} />
+    <div className="dial">
+      <svg className="dial__ring" viewBox="0 0 200 200" aria-hidden="true">
+        <circle className="dial__track" cx="100" cy="100" r={RADIUS} />
         <circle
-          className="display__progress"
+          className="dial__progress"
           cx="100"
           cy="100"
           r={RADIUS}
@@ -26,10 +30,14 @@ export function TimerDisplay({ phase, remainingMs }: Props) {
           strokeDashoffset={CIRCUMFERENCE * elapsed}
         />
       </svg>
-      <div className="display__center">
+      <div className="dial__center">
         {/* 색만으로 구분하지 않도록 단계명을 항상 함께 보여준다 */}
-        <span className="display__phase">{PHASE_LABELS[phase.type]}</span>
-        <span className="display__time" aria-hidden="true">
+        <span className="dial__phase">{PHASE_LABELS[phase.type]}</span>
+        <span
+          className={`dial__time${countdown ? ' dial__time--countdown' : ''}`}
+          key={countdown ? seconds : 'steady'}
+          aria-hidden="true"
+        >
           {formatMMSS(remainingMs / 1000)}
         </span>
       </div>

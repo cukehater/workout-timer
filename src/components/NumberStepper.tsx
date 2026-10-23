@@ -39,11 +39,12 @@ export function NumberStepper({ field, value, isTime = false, onChange }: Props)
   useEffect(() => stopHold, []);
 
   return (
-    <div className="stepper">
-      <span className="stepper__label" id={`${field}-label`}>
+    <div className="row">
+      <span className="row__label" id={`${field}-label`}>
         {label}
+        {isTime && <span className="row__hint">{formatMMSS(value)}</span>}
       </span>
-      <div className="stepper__row">
+      <div className="stepper">
         <button
           type="button"
           className="stepper__btn"
@@ -54,7 +55,9 @@ export function NumberStepper({ field, value, isTime = false, onChange }: Props)
           onPointerLeave={stopHold}
           onPointerCancel={stopHold}
         >
-          −
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14" />
+          </svg>
         </button>
         <label className="stepper__field">
           <input
@@ -67,7 +70,7 @@ export function NumberStepper({ field, value, isTime = false, onChange }: Props)
             value={value}
             onChange={(e) => onChange(clampField(field, e.currentTarget.valueAsNumber))}
           />
-          <span className="stepper__unit">{isTime ? formatMMSS(value) : '회'}</span>
+          <span className="stepper__unit">{isTime ? '초' : '회'}</span>
         </label>
         <button
           type="button"
@@ -79,7 +82,9 @@ export function NumberStepper({ field, value, isTime = false, onChange }: Props)
           onPointerLeave={stopHold}
           onPointerCancel={stopHold}
         >
-          +
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
         </button>
       </div>
     </div>

@@ -23,11 +23,7 @@ export function Controls({
 
   return (
     <div className="controls">
-      <button
-        type="button"
-        className="btn btn--primary"
-        onClick={paused ? onResume : onPause}
-      >
+      <button type="button" className="btn btn--phase" onClick={paused ? onResume : onPause}>
         {paused ? '재개' : '일시정지'}
       </button>
       <button type="button" className="btn" onClick={onSkip}>
@@ -36,12 +32,8 @@ export function Controls({
       <button type="button" className="btn" onClick={onResetRequest}>
         리셋
       </button>
-      <button
-        type="button"
-        className="btn"
-        aria-pressed={muted}
-        onClick={onToggleMute}
-      >
+      {/* 라벨이 이미 다음 동작을 말하므로 aria-pressed까지 붙이면 두 번 읽힌다 */}
+      <button type="button" className="btn" onClick={onToggleMute}>
         {muted ? '소리 켜기' : '음소거'}
       </button>
     </div>
