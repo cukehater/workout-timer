@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T00:00:00Z",
+  "title": "Design System: 운동 타이머",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "근-검정 (Near-Black)",
+        "canonical": "#0A0B0D",
+        "tonalRamp": [
+          "oklch(0.15 0.006 250)",
+          "oklch(0.26 0.006 250)",
+          "oklch(0.37 0.006 250)",
+          "oklch(0.48 0.006 250)",
+          "oklch(0.60 0.006 250)",
+          "oklch(0.72 0.005 250)",
+          "oklch(0.84 0.004 250)",
+          "oklch(0.95 0.003 250)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "올린 표면 (Raised Surface)",
+        "canonical": "#14161A",
+        "tonalRamp": [
+          "oklch(0.15 0.008 252)",
+          "oklch(0.26 0.008 252)",
+          "oklch(0.37 0.008 252)",
+          "oklch(0.48 0.008 252)",
+          "oklch(0.60 0.007 252)",
+          "oklch(0.72 0.006 252)",
+          "oklch(0.84 0.005 252)",
+          "oklch(0.95 0.004 252)"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "눌린 표면 (Inset Surface)",
+        "canonical": "#1B1E24",
+        "tonalRamp": [
+          "oklch(0.15 0.010 254)",
+          "oklch(0.26 0.010 254)",
+          "oklch(0.37 0.010 254)",
+          "oklch(0.48 0.010 254)",
+          "oklch(0.60 0.009 254)",
+          "oklch(0.72 0.008 254)",
+          "oklch(0.84 0.006 254)",
+          "oklch(0.95 0.004 254)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "머리카락 선 (Hairline)",
+        "canonical": "#262A32",
+        "tonalRamp": [
+          "oklch(0.15 0.012 256)",
+          "oklch(0.26 0.013 256)",
+          "oklch(0.37 0.013 256)",
+          "oklch(0.48 0.012 256)",
+          "oklch(0.60 0.011 256)",
+          "oklch(0.72 0.009 256)",
+          "oklch(0.84 0.007 256)",
+          "oklch(0.95 0.005 256)"
+        ]
+      },
+      "fg": {
+        "role": "neutral",
+        "displayName": "본문 흰색 (Paper White)",
+        "canonical": "#F4F6F8",
+        "tonalRamp": [
+          "oklch(0.15 0.005 240)",
+          "oklch(0.26 0.005 240)",
+          "oklch(0.37 0.005 240)",
+          "oklch(0.48 0.005 240)",
+          "oklch(0.60 0.005 240)",
+          "oklch(0.72 0.005 240)",
+          "oklch(0.84 0.005 240)",
+          "oklch(0.95 0.004 240)"
+        ]
+      },
+      "fg-dim": {
+        "role": "neutral",
+        "displayName": "흐린 회색 (Dimmed)",
+        "canonical": "#9BA3AF",
+        "note": "색이 든 실행 화면에서는 rgba(255,255,255,0.74)로 재정의된다.",
+        "tonalRamp": [
+          "oklch(0.15 0.016 255)",
+          "oklch(0.26 0.018 255)",
+          "oklch(0.37 0.020 255)",
+          "oklch(0.48 0.021 255)",
+          "oklch(0.60 0.022 255)",
+          "oklch(0.72 0.021 255)",
+          "oklch(0.84 0.016 255)",
+          "oklch(0.95 0.009 255)"
+        ]
+      },
+      "fg-faint": {
+        "role": "neutral",
+        "displayName": "더 흐린 회색 (Faint)",
+        "canonical": "#7B8392",
+        "note": "색이 든 실행 화면에서는 rgba(255,255,255,0.54)로 재정의된다.",
+        "tonalRamp": [
+          "oklch(0.15 0.018 256)",
+          "oklch(0.26 0.021 256)",
+          "oklch(0.37 0.024 256)",
+          "oklch(0.48 0.026 256)",
+          "oklch(0.60 0.027 256)",
+          "oklch(0.72 0.025 256)",
+          "oklch(0.84 0.019 256)",
+          "oklch(0.95 0.010 256)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "라임 시그널 (Lime Signal)",
+        "canonical": "#CCFF4D",
+        "tonalRamp": [
+          "oklch(0.15 0.060 121)",
+          "oklch(0.26 0.100 121)",
+          "oklch(0.37 0.138 121)",
+          "oklch(0.48 0.172 121)",
+          "oklch(0.60 0.200 121)",
+          "oklch(0.72 0.217 121)",
+          "oklch(0.84 0.219 121)",
+          "oklch(0.95 0.134 121)"
+        ]
+      },
+      "prep": {
+        "role": "secondary",
+        "displayName": "준비 앰버 (Prep Amber)",
+        "canonical": "#FFC53D",
+        "tonalRamp": [
+          "oklch(0.15 0.044 82)",
+          "oklch(0.26 0.072 82)",
+          "oklch(0.37 0.098 82)",
+          "oklch(0.48 0.122 82)",
+          "oklch(0.60 0.143 82)",
+          "oklch(0.72 0.157 82)",
+          "oklch(0.84 0.158 82)",
+          "oklch(0.95 0.096 82)"
+        ]
+      },
+      "work": {
+        "role": "secondary",
+        "displayName": "운동 코랄레드 (Work Coral-Red)",
+        "canonical": "#FF5A3C",
+        "tonalRamp": [
+          "oklch(0.15 0.056 33)",
+          "oklch(0.26 0.092 33)",
+          "oklch(0.37 0.126 33)",
+          "oklch(0.48 0.158 33)",
+          "oklch(0.60 0.184 33)",
+          "oklch(0.72 0.196 33)",
+          "oklch(0.84 0.150 33)",
+          "oklch(0.95 0.072 33)"
+        ]
+      },
+      "rest": {
+        "role": "secondary",
+        "displayName": "휴식 민트 (Rest Mint)",
+        "canonical": "#2FD49B",
+        "tonalRamp": [
+          "oklch(0.15 0.044 163)",
+          "oklch(0.26 0.072 163)",
+          "oklch(0.37 0.098 163)",
+          "oklch(0.48 0.122 163)",
+          "oklch(0.60 0.142 163)",
+          "oklch(0.72 0.155 163)",
+          "oklch(0.84 0.146 163)",
+          "oklch(0.95 0.088 163)"
+        ]
+      },
+      "set-rest": {
+        "role": "secondary",
+        "displayName": "세트 휴식 블루 (Set-Rest Blue)",
+        "canonical": "#5B8DEF",
+        "tonalRamp": [
+          "oklch(0.15 0.046 263)",
+          "oklch(0.26 0.076 263)",
+          "oklch(0.37 0.104 263)",
+          "oklch(0.48 0.130 263)",
+          "oklch(0.60 0.152 263)",
+          "oklch(0.72 0.148 263)",
+          "oklch(0.84 0.106 263)",
+          "oklch(0.95 0.052 263)"
+        ]
+      },
+      "ground-prep": {
+        "role": "tertiary",
+        "displayName": "앰버 그라운드",
+        "canonical": "#201D11",
+        "note": "준비 앰버를 근-검정에 9% 섞은 실행 화면 지면.",
+        "tonalRamp": [
+          "oklch(0.15 0.018 82)",
+          "oklch(0.26 0.024 82)",
+          "oklch(0.37 0.030 82)",
+          "oklch(0.48 0.034 82)",
+          "oklch(0.60 0.036 82)",
+          "oklch(0.72 0.034 82)",
+          "oklch(0.84 0.026 82)",
+          "oklch(0.95 0.014 82)"
+        ]
+      },
+      "ground-work": {
+        "role": "tertiary",
+        "displayName": "코랄 그라운드",
+        "canonical": "#201211",
+        "note": "운동 코랄레드를 근-검정에 9% 섞은 실행 화면 지면.",
+        "tonalRamp": [
+          "oklch(0.15 0.020 33)",
+          "oklch(0.26 0.026 33)",
+          "oklch(0.37 0.032 33)",
+          "oklch(0.48 0.036 33)",
+          "oklch(0.60 0.038 33)",
+          "oklch(0.72 0.036 33)",
+          "oklch(0.84 0.028 33)",
+          "oklch(0.95 0.015 33)"
+        ]
+      },
+      "ground-rest": {
+        "role": "tertiary",
+        "displayName": "민트 그라운드",
+        "canonical": "#0D1D1A",
+        "note": "휴식 민트를 근-검정에 9% 섞은 실행 화면 지면.",
+        "tonalRamp": [
+          "oklch(0.15 0.017 163)",
+          "oklch(0.26 0.023 163)",
+          "oklch(0.37 0.028 163)",
+          "oklch(0.48 0.032 163)",
+          "oklch(0.60 0.034 163)",
+          "oklch(0.72 0.032 163)",
+          "oklch(0.84 0.025 163)",
+          "oklch(0.95 0.013 163)"
+        ]
+      },
+      "ground-set-rest": {
+        "role": "tertiary",
+        "displayName": "블루 그라운드",
+        "canonical": "#111721",
+        "note": "세트 휴식 블루를 근-검정에 9% 섞은 실행 화면 지면.",
+        "tonalRamp": [
+          "oklch(0.15 0.018 263)",
+          "oklch(0.26 0.024 263)",
+          "oklch(0.37 0.030 263)",
+          "oklch(0.48 0.034 263)",
+          "oklch(0.60 0.036 263)",
+          "oklch(0.72 0.034 263)",
+          "oklch(0.84 0.026 263)",
+          "oklch(0.95 0.014 263)"
+        ]
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "위험 레드 (Danger Red)",
+        "canonical": "#FF5A5A",
+        "note": "리셋 확인 모달의 파괴적 행동 버튼 하나에만 쓴다.",
+        "tonalRamp": [
+          "oklch(0.15 0.054 22)",
+          "oklch(0.26 0.088 22)",
+          "oklch(0.37 0.120 22)",
+          "oklch(0.48 0.150 22)",
+          "oklch(0.60 0.174 22)",
+          "oklch(0.72 0.186 22)",
+          "oklch(0.84 0.142 22)",
+          "oklch(0.95 0.068 22)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "완료 화면의 총 운동 시간 단 하나. 크기를 글자 수(--chars)로 나눠 100:00까지 폭에 맞춘다."
+      },
+      "dial": {
+        "displayName": "Dial",
+        "purpose": "실행 화면의 남은 시간. 다이얼 지름의 24.5%로 계산되는 유일한 활자."
+      },
+      "phase": {
+        "displayName": "Phase",
+        "purpose": "링 안의 단계명. 단계 색으로, 최소 15px 바닥을 두고 다이얼 지름의 7.5%."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "설정 화면 제목(28px, 태블릿 34px, 낮은 가로 22px)과 완료 화면 제목(30px)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "설정 행 라벨, 버튼 라벨(800), 상단 메타 수치(800)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "모달 본문, 완료 화면 상세, 신호음 요약. 본문만 유일하게 500 굵기로 떨어진다."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "섹션 머리말(시간·반복·알림), 단위(초/회), 스테퍼 보조 표시."
+      }
+    },
+    "fonts": [
+      {
+        "family": "Pretendard Variable",
+        "version": "1.3.9",
+        "license": "SIL OFL 1.1",
+        "hosting": "self-hosted",
+        "files": "src/fonts/subset.80–91.woff2 (dynamic subset, 10 chunks)",
+        "variationAxis": "font-weight: 45 920",
+        "fontDisplay": "swap",
+        "purpose": "이 앱이 실제로 쓰는 글리프만 저장소에 둔다. CDN 의존 없이 오프라인에서도 같은 활자."
+      }
+    ],
+    "shadows": [],
+    "motion": [
+      {
+        "name": "dial-in",
+        "value": "dial-in 420ms cubic-bezier(0.16, 1, 0.3, 1) — @keyframes dial-in { from { transform: scale(0.955); } }",
+        "purpose": "단계가 바뀔 때 다이얼이 한 번 자리를 잡는다. React key로 재마운트돼 정확히 한 번 돈다."
+      },
+      {
+        "name": "tick",
+        "value": "tick 420ms cubic-bezier(0.16, 1, 0.3, 1) — @keyframes tick { from { transform: scale(1.09); } }",
+        "purpose": "마지막 3초, beep과 같은 박자로 숫자가 한 번 뛴다."
+      },
+      {
+        "name": "press",
+        "value": "transform 120ms ease (scale 0.97 버튼 / 0.94 칩)",
+        "purpose": "유일한 상태 전환 모션. hover는 없다 — 터치 우선."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "저작된 두 모션이 공유하는 단 하나의 이징."
+      },
+      {
+        "name": "phase-ground",
+        "value": "none (의도적 하드 컷)",
+        "purpose": "단계 지면 전환에는 트랜지션을 걸지 않는다. 색이 녹으면 1~2m 거리에서 전환 시점을 놓친다."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: reduce) { .btn, .chip { transition: none } .dial, .dial__time--countdown { animation: none } }",
+        "purpose": "두 키프레임 모두 from만 갖기 때문에 꺼져도 화면은 끝 상태 그대로 정상이다."
+      }
+    ],
+    "breakpoints": [
+      { "name": "thumb", "value": "(max-width: 480px)", "purpose": "주행동 버튼이 컨트롤 바 한 줄을 통째로 가져간다." },
+      { "name": "short-landscape", "value": "(orientation: landscape) and (max-height: 520px)", "purpose": "수직 패딩·간격 축소, 다이얼 min(42vw, 62dvh), 안내문 숨김." },
+      { "name": "tablet", "value": "(min-width: 48rem) and (min-height: 600px)", "purpose": "설정 폭 34rem, 제목 34px, 버튼 60px, 다이얼 min(78vw, 58dvh, 560px)." }
+    ],
+    "dial": {
+      "default": "min(78vw, 50dvh, 420px)",
+      "shortLandscape": "min(42vw, 62dvh)",
+      "tablet": "min(78vw, 58dvh, 560px)",
+      "geometry": "SVG 200×200 viewBox, r=84, stroke-width 11, stroke-linecap round, rotate(-90deg)",
+      "track": "rgba(255, 255, 255, 0.1)",
+      "progress": "var(--phase)",
+      "purpose": "폭과 높이를 동시에 제한해야 가로 모드에서 넘치지 않는다. 다이얼 안의 모든 활자가 이 값에서 계산된다."
+    },
+    "browserSurfaces": [
+      { "name": "selection", "value": "::selection { background: #CCFF4D; color: #0A0B0D }" },
+      { "name": "caret", "value": "caret-color: #CCFF4D (숫자 입력)" },
+      { "name": "focus-ring", "value": ":focus-visible { outline: 3px solid #CCFF4D; outline-offset: 3px }" },
+      { "name": "scrollbar", "value": "scrollbar-color: #262A32 transparent; scrollbar-width: thin; ::-webkit-scrollbar { width: 10px } ::-webkit-scrollbar-thumb { background: #262A32; border: 3px solid transparent; border-radius: 999px; background-clip: content-box }" },
+      { "name": "theme-color", "value": "<meta name=\"theme-color\"> 가 현재 --ground 값을 따라간다 (App.tsx)" },
+      { "name": "color-scheme", "value": "dark (html + :root)" },
+      { "name": "korean-wrapping", "value": "word-break: keep-all (전역)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Start Button",
+      "kind": "button",
+      "refersTo": "button-start",
+      "description": "설정 화면 하단 sticky 푸터의 주행동. 폭 100%, 라임 바탕.",
+      "html": "<button type=\"button\" class=\"ds-btn ds-btn-start\">시작</button>",
+      "css": ".ds-btn { min-height: 56px; padding: 0 18px; border: 0; border-radius: var(--radius, 14px); background: var(--surface-2, #1B1E24); color: var(--fg, #F4F6F8); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 17px; font-weight: 800; cursor: pointer; touch-action: manipulation; transition: transform 120ms ease; } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; } .ds-btn-start { width: 100%; min-height: 60px; background: var(--accent, #CCFF4D); color: #0A0B0D; font-size: 19px; font-weight: 900; }"
+    },
+    {
+      "name": "Phase Button",
+      "kind": "button",
+      "refersTo": "button-phase",
+      "description": "실행 화면 주행동(일시정지/재개). 바탕이 현재 단계 색이라 단계가 바뀌면 함께 바뀐다. 480px 미만에서 한 줄 전체.",
+      "html": "<div class=\"ds-phase-scope\"><button type=\"button\" class=\"ds-btn ds-btn-phase\">일시정지</button></div>",
+      "css": ".ds-phase-scope { --phase: #FF5A3C; padding: 16px; border-radius: 14px; background: #201211; } .ds-phase-scope .ds-btn { min-height: 56px; padding: 0 18px; border: 0; border-radius: var(--radius, 14px); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 17px; font-weight: 800; cursor: pointer; transition: transform 120ms ease; } .ds-btn-phase { width: 100%; background: var(--phase); color: #0A0B0D; } .ds-btn-phase:active { transform: scale(0.97); } .ds-btn-phase:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Control Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "실행 화면 보조 컨트롤(건너뛰기·리셋·음소거). 단계 지면 속으로 검은색을 눌러 앉힌다.",
+      "html": "<div class=\"ds-ghost-scope\"><button type=\"button\" class=\"ds-btn-ghost\">건너뛰기</button><button type=\"button\" class=\"ds-btn-ghost\">리셋</button><button type=\"button\" class=\"ds-btn-ghost\">음소거</button></div>",
+      "css": ".ds-ghost-scope { display: flex; gap: 8px; padding: 16px; border-radius: 14px; background: #201211; } .ds-btn-ghost { flex: 1; min-height: 56px; padding: 0 8px; border: 0; border-radius: 14px; background: rgba(0, 0, 0, 0.32); color: #F4F6F8; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 17px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: transform 120ms ease; } .ds-btn-ghost:active { background: rgba(0, 0, 0, 0.46); transform: scale(0.97); } .ds-btn-ghost:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "파괴적 행동 하나에만 — 리셋 확인.",
+      "html": "<button type=\"button\" class=\"ds-btn-danger\">리셋</button>",
+      "css": ".ds-btn-danger { min-height: 56px; padding: 0 18px; border: 0; border-radius: var(--radius, 14px); background: var(--danger, #FF5A5A); color: #0A0B0D; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 17px; font-weight: 800; cursor: pointer; transition: transform 120ms ease; } .ds-btn-danger:active { transform: scale(0.97); } .ds-btn-danger:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; }"
+    },
+    {
+      "name": "Settings Panel Row (Stepper)",
+      "kind": "input",
+      "refersTo": "row",
+      "description": "설정 화면의 기본 단위. 섹션 머리말은 패널 밖, 행은 64px, 행 사이는 1px 머리카락 선, 오른쪽에 −/+ 스테퍼 트레이.",
+      "html": "<section class=\"ds-panel\"><h2 class=\"ds-panel-label\">시간</h2><div class=\"ds-panel-rows\"><div class=\"ds-row\"><span class=\"ds-row-label\">운동 시간<span class=\"ds-row-hint\">00:20</span></span><div class=\"ds-stepper\"><button type=\"button\" class=\"ds-stepper-btn\" aria-label=\"운동 시간 줄이기\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></button><label class=\"ds-stepper-field\"><input type=\"number\" inputmode=\"numeric\" class=\"ds-stepper-input\" value=\"20\"><span class=\"ds-stepper-unit\">초</span></label><button type=\"button\" class=\"ds-stepper-btn\" aria-label=\"운동 시간 늘리기\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg></button></div></div><div class=\"ds-row\"><span class=\"ds-row-label\">세트 수</span><div class=\"ds-stepper\"><button type=\"button\" class=\"ds-stepper-btn\" aria-label=\"세트 수 줄이기\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></button><label class=\"ds-stepper-field\"><input type=\"number\" inputmode=\"numeric\" class=\"ds-stepper-input\" value=\"3\"><span class=\"ds-stepper-unit\">회</span></label><button type=\"button\" class=\"ds-stepper-btn\" aria-label=\"세트 수 늘리기\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg></button></div></div></div></section>",
+      "css": ".ds-panel { display: flex; flex-direction: column; gap: 8px; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; } .ds-panel-label { margin: 0 0 0 4px; color: var(--fg-dim, #9BA3AF); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; } .ds-panel-rows { overflow: hidden; border: 1px solid var(--line, #262A32); border-radius: var(--radius-lg, 18px); background: var(--surface, #14161A); } .ds-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; padding: 10px 12px 10px 16px; color: var(--fg, #F4F6F8); } .ds-row + .ds-row { border-top: 1px solid var(--line, #262A32); } .ds-row-label { display: flex; flex-direction: column; gap: 1px; font-size: 17px; font-weight: 700; } .ds-row-hint { color: var(--fg-dim, #9BA3AF); font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-stepper { display: flex; align-items: center; gap: 4px; padding: 4px; border-radius: var(--radius, 14px); background: var(--surface-2, #1B1E24); } .ds-stepper-btn { display: grid; place-items: center; width: 46px; height: 46px; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--fg, #F4F6F8); cursor: pointer; user-select: none; } .ds-stepper-btn:active { background: #272B33; } .ds-stepper-btn:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; } .ds-stepper-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; } .ds-stepper-field { display: flex; align-items: baseline; justify-content: flex-end; gap: 4px; min-width: 82px; } .ds-stepper-input { appearance: textfield; -moz-appearance: textfield; width: 52px; min-width: 0; padding: 0; border: 0; background: none; color: var(--fg, #F4F6F8); caret-color: var(--accent, #CCFF4D); font-family: inherit; font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums; text-align: right; } .ds-stepper-input::-webkit-outer-spin-button, .ds-stepper-input::-webkit-inner-spin-button { margin: 0; -webkit-appearance: none; appearance: none; } .ds-stepper-unit { color: var(--fg-dim, #9BA3AF); font-size: 13px; font-weight: 700; }"
+    },
+    {
+      "name": "Beep Preset Chips",
+      "kind": "chip",
+      "refersTo": "preset",
+      "description": "신호음 프리셋 4개. 기본은 테두리만, 선택되면 라임 바탕. auto-fit minmax(120px) 그리드라 폭에 따라 2열↔4열로 접힌다.",
+      "html": "<div class=\"ds-preset-scope\"><p class=\"ds-beeps-summary\">단계가 끝나기 <b>3·2·1초</b> 전에 신호음이 울립니다</p><div class=\"ds-presets\"><button type=\"button\" class=\"ds-preset\">끄기</button><button type=\"button\" class=\"ds-preset ds-preset-on\" aria-pressed=\"true\">마지막 3초</button><button type=\"button\" class=\"ds-preset\">마지막 5초</button><button type=\"button\" class=\"ds-preset\">10초 전부터</button></div></div>",
+      "css": ".ds-preset-scope { padding: 14px 16px 16px; border: 1px solid var(--line, #262A32); border-radius: var(--radius-lg, 18px); background: var(--surface, #14161A); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; } .ds-beeps-summary { margin: 0 0 12px; color: var(--fg-dim, #9BA3AF); font-size: 14px; font-weight: 500; line-height: 1.5; } .ds-beeps-summary b { color: var(--accent, #CCFF4D); font-weight: 800; font-variant-numeric: tabular-nums; } .ds-presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; } .ds-preset { min-height: 46px; padding: 0 10px; border: 1px solid var(--line, #262A32); border-radius: 12px; background: transparent; color: var(--fg-dim, #9BA3AF); font-family: inherit; font-size: 14px; font-weight: 700; white-space: nowrap; cursor: pointer; } .ds-preset:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; } .ds-preset-on { border-color: transparent; background: var(--accent, #CCFF4D); color: #0A0B0D; }"
+    },
+    {
+      "name": "Beep Number Chips",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "'직접 고르기'의 1~10 칩. 5열 두 줄 고정 — 폭에 따라 끝자리가 홀로 떨어지지 않게.",
+      "html": "<div class=\"ds-chips\"><button type=\"button\" class=\"ds-chip ds-chip-on\" aria-pressed=\"true\">1</button><button type=\"button\" class=\"ds-chip ds-chip-on\" aria-pressed=\"true\">2</button><button type=\"button\" class=\"ds-chip ds-chip-on\" aria-pressed=\"true\">3</button><button type=\"button\" class=\"ds-chip\">4</button><button type=\"button\" class=\"ds-chip\">5</button><button type=\"button\" class=\"ds-chip\">6</button><button type=\"button\" class=\"ds-chip\">7</button><button type=\"button\" class=\"ds-chip\">8</button><button type=\"button\" class=\"ds-chip\">9</button><button type=\"button\" class=\"ds-chip\">10</button></div>",
+      "css": ".ds-chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; } .ds-chip { width: 100%; height: 46px; padding: 0; border: 0; border-radius: 12px; background: var(--surface-2, #1B1E24); color: var(--fg-dim, #9BA3AF); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; cursor: pointer; transition: transform 120ms ease; } .ds-chip:active { transform: scale(0.94); } .ds-chip:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; } .ds-chip-on { background: var(--accent, #CCFF4D); color: #0A0B0D; }"
+    },
+    {
+      "name": "Phase Dial",
+      "kind": "custom",
+      "refersTo": "—",
+      "description": "시그니처 컴포넌트. --dial 한 변수가 크기를 정하고 안의 모든 활자가 그 변수에서 계산된다. 링·단계명이 같은 --phase를 쓴다.",
+      "html": "<div class=\"ds-dial-scope\"><div class=\"ds-dial\"><svg class=\"ds-dial-ring\" viewBox=\"0 0 200 200\" aria-hidden=\"true\"><circle class=\"ds-dial-track\" cx=\"100\" cy=\"100\" r=\"84\"/><circle class=\"ds-dial-progress\" cx=\"100\" cy=\"100\" r=\"84\" stroke-dasharray=\"527.79\" stroke-dashoffset=\"105.6\"/></svg><div class=\"ds-dial-center\"><span class=\"ds-dial-phase\">운동</span><span class=\"ds-dial-time\">00:16</span></div></div></div>",
+      "css": ".ds-dial-scope { --phase: #FF5A3C; display: grid; place-items: center; padding: 24px; border-radius: 18px; background: #201211; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; } .ds-dial { --dial: min(78vw, 50dvh, 420px); position: relative; width: var(--dial); height: var(--dial); animation: ds-dial-in 420ms cubic-bezier(0.16, 1, 0.3, 1); } @keyframes ds-dial-in { from { transform: scale(0.955); } } .ds-dial-ring { width: 100%; height: 100%; transform: rotate(-90deg); } .ds-dial-track, .ds-dial-progress { fill: none; stroke-width: 11; } .ds-dial-track { stroke: rgba(255, 255, 255, 0.1); } .ds-dial-progress { stroke: var(--phase); stroke-linecap: round; } .ds-dial-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; } .ds-dial-phase { color: var(--phase); font-size: max(15px, calc(var(--dial) * 0.075)); font-weight: 900; letter-spacing: 0.08em; } .ds-dial-time { color: #fff; font-size: calc(var(--dial) * 0.245); font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; line-height: 1; } @media (prefers-reduced-motion: reduce) { .ds-dial { animation: none; } }"
+    },
+    {
+      "name": "Run Meta + Next Up",
+      "kind": "nav",
+      "refersTo": "—",
+      "description": "실행 화면의 두 보조 줄 — 위의 세트/사이클/종료까지 메타와, 다이얼 아래 다음 단계 예고. 점 + 이름 + 시간으로 색 없이도 읽힌다.",
+      "html": "<div class=\"ds-run-scope\"><div class=\"ds-meta\"><span>세트 <b class=\"ds-meta-value\">1</b><span class=\"ds-meta-of\">/3</span></span><span>사이클 <b class=\"ds-meta-value\">1</b><span class=\"ds-meta-of\">/8</span></span><span>종료까지 <b class=\"ds-meta-value\">13:26</b></span></div><p class=\"ds-next\"><span class=\"ds-next-dot\"></span>다음 <b class=\"ds-next-name\">휴식</b><span class=\"ds-next-time\">00:10</span></p></div>",
+      "css": ".ds-run-scope { --fg-dim: rgba(255, 255, 255, 0.74); display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 16px; border-radius: 18px; background: #201211; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; } .ds-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; color: var(--fg-dim); font-size: 15px; font-weight: 700; } .ds-meta-value { color: #F4F6F8; font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; } .ds-meta-of { font-variant-numeric: tabular-nums; } .ds-next { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--fg-dim); font-size: 16px; font-weight: 700; } .ds-next-dot { width: 10px; height: 10px; border-radius: 3px; background: #2FD49B; } .ds-next-name { color: #F4F6F8; font-weight: 800; } .ds-next-time { color: #F4F6F8; font-weight: 800; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Confirm Modal",
+      "kind": "card",
+      "refersTo": "modal",
+      "description": "네이티브 <dialog> 기반 리셋 확인. 화면 중 유일하게 왼쪽 정렬 텍스트, 액션 두 개가 폭을 반씩 나눠 갖는다.",
+      "html": "<div class=\"ds-modal\"><h2 class=\"ds-modal-title\">운동을 리셋할까요?</h2><p class=\"ds-modal-body\">진행 중인 세트와 사이클이 모두 초기화됩니다.</p><div class=\"ds-modal-actions\"><button type=\"button\" class=\"ds-modal-btn\">취소</button><button type=\"button\" class=\"ds-modal-btn ds-modal-btn-danger\">리셋</button></div></div>",
+      "css": ".ds-modal { max-width: 22rem; padding: 20px; border: 1px solid var(--line, #262A32); border-radius: var(--radius-lg, 18px); background: var(--surface, #14161A); color: var(--fg, #F4F6F8); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; text-align: left; } .ds-modal-title { margin: 0 0 8px; font-size: 19px; font-weight: 900; } .ds-modal-body { margin: 0 0 18px; color: var(--fg-dim, #9BA3AF); font-size: 15px; font-weight: 500; line-height: 1.5; } .ds-modal-actions { display: flex; gap: 8px; } .ds-modal-btn { flex: 1; min-height: 56px; padding: 0 18px; border: 0; border-radius: var(--radius, 14px); background: var(--surface-2, #1B1E24); color: var(--fg, #F4F6F8); font-family: inherit; font-size: 17px; font-weight: 800; cursor: pointer; transition: transform 120ms ease; } .ds-modal-btn:active { transform: scale(0.97); } .ds-modal-btn:focus-visible { outline: 3px solid var(--accent, #CCFF4D); outline-offset: 3px; } .ds-modal-btn-danger { background: var(--danger, #FF5A5A); color: #0A0B0D; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Lit Dial in a Dark Room",
+    "overview": "이 시스템은 비유를 입지 않는다. 인터벌 타이머가 실제로 출시되는 형태 — 어두운 지면, 단계 색 원형 진행 링, 거대한 남은 시간, 하단 컨트롤 바 — 를 변주 없이 치되, 동종 앱보다 한 단계 더 정확하게 친다. 사용자가 비주얼 방향 선택에서 일곱 개의 비유적 세계를 보고 카테고리 표준을 의도적으로 고른 결과다. 품질 바는 Tabata/HIIT 전용 타이머 앱과 Apple 피트니스이고, 겨루는 지점은 발명이 아니라 완성도다.\n\n세계를 지배하는 것은 팔레트가 아니라 단계다. 설정 화면과 완료 화면은 근-검정 지면(#0A0B0D) 위의 조용한 목록이지만, 운동이 시작되는 순간 화면 전체가 현재 단계의 색으로 갈아입는다. 링, 단계명, 주행동 버튼이 한 색을 공유하고, 지면마저 그 색을 9%만 섞은 값으로 바뀐다. 9%는 임의의 수가 아니라 링이 바탕에서 떨어져 나오는 최소치다 — 더 섞으면 링이 묻히고, 안 섞으면 1~2m 거리에서 단계 전환이 곁눈질로 읽히지 않는다.\n\n밀도는 두 화면이 정반대다. 설정 화면은 섹션 목록으로 조밀하게(64px 행, 1px 머리카락 선, 30rem 단일 열), 실행 화면은 성기고 크게(뷰포트 비례 다이얼, 다이얼의 24.5%짜리 숫자, 그 외에는 거의 아무것도 없이). 장식은 0이다 — 그라디언트도, 글라스도, 그림자도, 글리프 아이콘도 없다. 깊이는 색조 단차 세 단과 머리카락 선 하나로만 만든다.",
+    "keyCharacteristics": [
+      "근-검정 지면 위, 단계 색이 화면 전체를 몰고 다니는 다크 온리 세계",
+      "그림자 0개 — 깊이는 #0A0B0D → #14161A → #1B1E24 색조 단차와 1px #262A32 선으로만",
+      "Pretendard Variable 한 가족, 네 단(900/800/700/500), 모든 숫자는 tabular-nums",
+      "다이얼은 px이 아니라 뷰포트에서 계산되고, 그 안의 숫자는 다이얼에서 계산된다",
+      "저작된 모션은 평생 두 개 — 다이얼 진입, 마지막 3초 틱. 둘 다 보이는 상태에서 출발한다",
+      "어떤 뷰포트에서도 2열로 분기하지 않는다"
+    ],
+    "rules": [
+      { "name": "The Phase Owns the Screen Rule", "body": "실행 중에는 링, 단계명, 주행동 버튼, 지면이 모두 같은 --phase/--ground 쌍을 쓴다. 실행 화면에 단계 색과 무관한 유채색을 들이지 않는다 — 유일한 예외는 다음 단계를 예고하는 10px 점과 전역 포커스 링이다.", "section": "colors" },
+      { "name": "The 9% Ground Rule", "body": "단계 지면은 단계 색을 9%만 섞는다. 그 이상이면 링이 바탕에 묻히고, 0이면 곁눈질로 단계 전환을 놓친다. 새 단계 색을 추가하려면 지면 값도 같은 비율로 함께 만든다.", "section": "colors" },
+      { "name": "The Lime Stays Off the Mat Rule", "body": "라임은 설정·완료 화면의 주행동과 선택 상태에만 쓴다. 운동 중 화면에서 라임이 보이면 그것은 단계 색과 경쟁하는 것이다. 포커스 링(3px solid, offset 3px)만 전역 예외다.", "section": "colors" },
+      { "name": "The Grey Comes From the Ground Rule", "body": "색이 든 지면 위에서는 중성 회색이 뜬다. .screen--run은 --fg-dim/--fg-faint를 흰색 알파(0.74 / 0.54)로 다시 정의한다. 새 단계 화면을 만들면 같은 재정의를 따른다.", "section": "colors" },
+      { "name": "The Name Beside the Colour Rule", "body": "단계는 색만으로 전달하지 않는다. 링 안에는 항상 단계명이 같은 색으로 함께 있고, 다음 단계 줄에는 점 + 이름 + 시간이 함께 있다. 색각 이상에서도 읽혀야 한다.", "section": "colors" },
+      { "name": "The One Family Rule", "body": "활자는 Pretendard Variable 한 가족이다. 숫자 전용 폰트를 들이지 않는다 — 자리폭은 font-variant-numeric: tabular-nums가 잡는다.", "section": "typography" },
+      { "name": "The Dial Sets the Type Rule", "body": "실행 화면의 활자 크기는 px이 아니라 다이얼에서 계산된다(시간 ×0.245, 단계명 ×0.075). 실행 화면에 고정 px 글자를 새로 들이지 않는다.", "section": "typography" },
+      { "name": "The Korean Doesn't Break Mid-Word Rule", "body": "word-break: keep-all이 전역이다. 한국어는 어절 중간에서 끊지 않는다. 좁은 폭에서 줄이 늘어나는 쪽을 택하고, 그래서 버튼과 칩은 white-space: nowrap으로 따로 지킨다.", "section": "typography" },
+      { "name": "The One Column Rule", "body": "폭이 아무리 넓어져도 2열로 분기하지 않는다. 데스크톱은 '큰 모바일'이다 — 여백이 늘고 다이얼이 커질 뿐 배치는 같다.", "section": "layout" },
+      { "name": "The Thumb Owns the Row Rule", "body": "480px 미만에서 주행동(일시정지/재개)은 한 줄 전체를 차지한다. 터치 타겟은 버튼 56px(태블릿 60px), 스테퍼·칩·프리셋 46px로 최소 44px를 넘긴다.", "section": "layout" },
+      { "name": "The No-Shadow Rule", "body": "이 세계에 그림자는 없다. 떠 보이게 하고 싶으면 표면 색을 한 단 올리고, 눌러 보이게 하고 싶으면 검은색 알파를 깐다.", "section": "elevation" },
+      { "name": "The Hairline Is the Only Line Rule", "body": "구분선은 1px #262A32 하나뿐이다. 두께를 바꾸거나 두 번째 선 색을 만들지 않는다.", "section": "elevation" },
+      { "name": "The Two Moments Rule", "body": "저작된 모션은 둘뿐이다. ① 다이얼 진입 dial-in — 420ms cubic-bezier(0.16, 1, 0.3, 1), 단계마다 한 번. ② 마지막 3초 tick — 같은 길이·같은 이징으로 숫자가 beep과 같은 박자에 한 번 뛴다. 세 번째 모션을 추가하지 않는다.", "section": "components" },
+      { "name": "The Visible-First Rule", "body": "두 키프레임 모두 from만 갖는다 — 끝 상태가 기본값이라 애니메이션이 돌지 않아도 화면은 정상이다. prefers-reduced-motion: reduce에서 둘 다 animation: none.", "section": "components" },
+      { "name": "The Hard Cut Rule", "body": "단계 지면 전환에는 트랜지션이 없다. 의도적이다 — 1~2m 거리에서 곁눈질로 볼 때 색이 서서히 녹으면 단계가 바뀐 시점을 놓친다. 지면은 잘라서 바꾼다.", "section": "components" }
+    ],
+    "dos": [
+      "Do 실행 화면의 새 요소에 색을 줄 때 var(--phase)와 var(--ground)를 쓴다. 단계 색 네 개를 직접 쓰는 곳은 :root의 정의, .screen[data-phase], 다음 단계 점 네 개뿐이다.",
+      "Do 단계 색을 추가하거나 바꿀 때 9% 지면 값을 쌍으로 함께 만든다.",
+      "Do 실행 화면의 활자를 --dial 비례로 쓴다(시간 ×0.245, 단계명 ×0.075).",
+      "Do 숫자가 들어가는 모든 자리에 font-variant-numeric: tabular-nums를 단다.",
+      "Do 단계를 알릴 때 색과 이름을 항상 함께 낸다.",
+      "Do 터치 타겟을 버튼 56px / 소형 컨트롤 46px 이상으로 유지한다.",
+      "Do 새 모션을 넣을 때 from만 있는 키프레임으로 쓰고 prefers-reduced-motion 블록에 추가한다.",
+      "Do 한국어 텍스트에 word-break: keep-all을 유지하고, 버튼·칩은 white-space: nowrap으로 지킨다.",
+      "Do 브라우저 표면(::selection, caret-color, 스크롤바, 포커스 링)을 팔레트 안에서 칠한다.",
+      "Do <dialog>, <details>, <fieldset>, SVG처럼 브라우저가 이미 하는 일을 브라우저에게 맡긴다."
+    ],
+    "donts": [
+      "Don't 그림자·그라디언트·블러·글라스를 들인다. 깊이는 표면 세 단과 1px 선으로 만든다.",
+      "Don't 실행 화면에 라임(#CCFF4D)을 쓴다 — 포커스 링만 예외다.",
+      "Don't 어떤 뷰포트에서도 2열로 분기한다. 넓어지면 다이얼과 여백을 키운다.",
+      "Don't 단계 지면 전환에 트랜지션을 건다.",
+      "Don't 숫자 전용 폰트나 다섯 번째 굵기를 추가한다. 가족은 하나, 굵기는 900/800/700/500.",
+      "Don't 글리프 아이콘이나 아이콘 폰트를 들인다. 인라인 SVG 패스로 그린다.",
+      "Don't 다섯 번째 반지름 값을 만든다(10 / 12 / 14 / 18 외).",
+      "Don't 실행 화면에 고정 px 글자 크기를 새로 들인다.",
+      "Don't 색이 든 지면 위에서 중성 회색(#9BA3AF 원값)을 그대로 쓴다. 흰색 알파로 재정의한다.",
+      "Don't 설정 화면 머리말을 패널 안으로 넣거나 패널에 두 번째 테두리 색을 준다."
+    ]
+  }
+}
