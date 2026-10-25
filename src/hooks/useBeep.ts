@@ -33,7 +33,7 @@ function tone(ctx: AudioContext, freq: number, ms: number, startAt: number) {
   osc.stop(end + 0.02);
 }
 
-export function useBeep(muted: boolean) {
+export function useBeep() {
   const ctxRef = useRef<AudioContext | null>(null);
 
   /** iOS Safari는 사용자 제스처 안에서만 AudioContext를 열 수 있다 */
@@ -42,23 +42,20 @@ export function useBeep(muted: boolean) {
     if (ctxRef.current.state === 'suspended') void ctxRef.current.resume();
   }, []);
 
-  const play = useCallback(
-    (kind: BeepKind) => {
-      const ctx = ctxRef.current;
-      if (muted || !ctx) return;
-      const now = ctx.currentTime;
-      if (kind === 'finish') {
-        const { freq, ms } = TONES.long;
-        for (let i = 0; i < FINISH_REPEAT; i++) {
-          tone(ctx, freq, ms, now + (i * (ms + FINISH_GAP_MS)) / 1000);
-        }
-        return;
+  const play = useCallback((kind: BeepKind) => {
+    const ctx = ctxRef.current;
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    if (kind === 'finish') {
+      const { freq, ms } = TONES.long;
+      for (let i = 0; i < FINISH_REPEAT; i++) {
+        tone(ctx, freq, ms, now + (i * (ms + FINISH_GAP_MS)) / 1000);
       }
-      const { freq, ms } = TONES[kind];
-      tone(ctx, freq, ms, now);
-    },
-    [muted],
-  );
+      return;
+    }
+    const { freq, ms } = TONES[kind];
+    tone(ctx, freq, ms, now);
+  }, []);
 
   return { unlock, play };
 }

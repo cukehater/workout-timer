@@ -26,6 +26,7 @@ export type TimerAction =
   | { type: 'PAUSE'; now: number }
   | { type: 'RESUME'; now: number }
   | { type: 'SKIP'; now: number }
+  | { type: 'PREV'; now: number }
   | { type: 'RESET' }
   | { type: 'CONSUME_BEEPS' };
 
@@ -110,6 +111,18 @@ function skip(state: TimerState, now: number): TimerState {
   };
 }
 
+function prev(state: TimerState, now: number): TimerState {
+  const index = state.index - 1;
+  const durationMs = state.phases[index].durationSec * 1000;
+  return {
+    ...state,
+    index,
+    phaseEndsAt: now + durationMs,
+    remainingMs: durationMs,
+    firedBeeps: [],
+  };
+}
+
 export function timerReducer(state: TimerState, action: TimerAction): TimerState {
   switch (action.type) {
     case 'START': {
@@ -145,6 +158,10 @@ export function timerReducer(state: TimerState, action: TimerAction): TimerState
     case 'SKIP':
       if (state.status !== 'running' && state.status !== 'paused') return state;
       return skip(state, action.now);
+
+    case 'PREV':
+      if (state.status !== 'running' && state.status !== 'paused') return state;
+      return state.index === 0 ? state : prev(state, action.now);
 
     case 'RESET':
       return INITIAL_STATE;

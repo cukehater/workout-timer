@@ -7,9 +7,9 @@ import { useBeep } from './useBeep';
 /** 백그라운드에서 rAF가 멈춰도 돌아가는 보조 틱 */
 const FALLBACK_TICK_MS = 250;
 
-export function useTimer(config: TimerConfig, muted: boolean) {
+export function useTimer(config: TimerConfig) {
   const [state, dispatch] = useReducer(timerReducer, INITIAL_STATE);
-  const { unlock, play } = useBeep(muted);
+  const { unlock, play } = useBeep();
 
   const tick = useCallback(() => dispatch({ type: 'TICK', now: performance.now() }), []);
 
@@ -58,7 +58,8 @@ export function useTimer(config: TimerConfig, muted: boolean) {
   const pause = useCallback(() => dispatch({ type: 'PAUSE', now: performance.now() }), []);
   const resume = useCallback(() => dispatch({ type: 'RESUME', now: performance.now() }), []);
   const skip = useCallback(() => dispatch({ type: 'SKIP', now: performance.now() }), []);
+  const prev = useCallback(() => dispatch({ type: 'PREV', now: performance.now() }), []);
   const reset = useCallback(() => dispatch({ type: 'RESET' }), []);
 
-  return { state, start, pause, resume, skip, reset };
+  return { state, start, pause, resume, skip, prev, reset };
 }

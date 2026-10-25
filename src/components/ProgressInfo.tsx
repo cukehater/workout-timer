@@ -25,7 +25,7 @@ export function ProgressInfo({ phases, index, remainingMs, sets, cycles }: Props
           <span className="meta__of">/{cycles}</span>
         </span>
       )}
-      <span className="meta__item">
+      <span className="meta__item meta__item--total">
         종료까지{' '}
         <b className="meta__value">{formatMMSS(remainingTotalSec(phases, index, remainingMs))}</b>
       </span>

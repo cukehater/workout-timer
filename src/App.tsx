@@ -11,11 +11,15 @@ import { useWakeLock } from './hooks/useWakeLock';
 import { totalSeconds } from './lib/buildPhases';
 import { formatMMSS } from './lib/format';
 
+/** 탭으로 띄운 컨트롤이 진행 중에 저절로 사라지기까지 */
+const CONTROLS_HIDE_MS = 4000;
+
 export default function App() {
-  const { config, muted, setConfig, toggleMuted } = useStoredSettings();
-  const { state, start, pause, resume, skip, reset } = useTimer(config, muted);
+  const { config, setConfig } = useStoredSettings();
+  const { state, start, pause, resume, skip, prev, reset } = useTimer(config);
   const wakeLockSupported = useWakeLock(state.status === 'running');
   const [confirmReset, setConfirmReset] = useState(false);
+  const [controlsShown, setControlsShown] = useState(false);
 
   const running = state.status === 'running' || state.status === 'paused';
   const phaseType = running ? state.phases[state.index].type : state.status;
@@ -41,6 +45,13 @@ export default function App() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [running, state.status, pause, resume]);
+
+  // 버튼으로 단계·상태가 바뀌면 숨김 타이머를 다시 잰다
+  useEffect(() => {
+    if (!controlsShown || state.status !== 'running') return;
+    const id = setTimeout(() => setControlsShown(false), CONTROLS_HIDE_MS);
+    return () => clearTimeout(id);
+  }, [controlsShown, state.status, state.index]);
 
   if (state.status === 'idle') {
     return (
@@ -83,6 +94,12 @@ export default function App() {
       className="screen screen--run"
       data-phase={phase.type}
       data-paused={state.status === 'paused' ? '' : undefined}
+      onClick={(e) => {
+        // 숨은 컨트롤은 클릭을 받지 않으므로 첫 탭은 컨트롤을 띄우기만 한다
+        if ((e.target as Element).closest('.controls, .modal')) return;
+        setControlsShown((shown) => !shown);
+      }}
+      onFocus={() => setControlsShown(true)}
     >
       <ProgressInfo
         phases={state.phases}
@@ -100,27 +117,31 @@ export default function App() {
         running={state.status === 'running'}
       />
 
-      {state.status === 'paused' ? (
-        <p className="next next--paused">일시정지</p>
-      ) : (
-        <NextUp next={state.phases[state.index + 1]} />
-      )}
+      <NextUp next={state.phases[state.index + 1]} />
 
-      <Controls
-        status={state.status}
-        muted={muted}
-        onPause={pause}
-        onResume={resume}
-        onSkip={skip}
-        onResetRequest={() => setConfirmReset(true)}
-        onToggleMute={toggleMuted}
-      />
+      {/* 일시정지 중에는 늘 보인다 — 재개할 곳을 찾게 만들지 않는다 */}
+      <div
+        className="dock"
+        data-shown={controlsShown || state.status === 'paused' ? '' : undefined}
+      >
+        {/* 일시정지 중엔 컨트롤 판이 화면 아래를 덮으므로 표시도 판 위에 둔다 */}
+        {state.status === 'paused' && <p className="next next--paused">일시정지</p>}
+        <Controls
+          status={state.status}
+          canPrev={state.index > 0}
+          onPause={pause}
+          onResume={resume}
+          onPrev={prev}
+          onSkip={skip}
+          onResetRequest={() => setConfirmReset(true)}
+        />
 
-      <p className="note">
-        {wakeLockSupported
-          ? '다른 탭으로 이동하면 알림이 늦을 수 있습니다.'
-          : '이 브라우저는 화면 꺼짐 방지를 지원하지 않습니다. 화면이 꺼지면 알림이 늦을 수 있습니다.'}
-      </p>
+        <p className="note">
+          {wakeLockSupported
+            ? '다른 탭으로 이동하면 알림이 늦을 수 있습니다.'
+            : '이 브라우저는 화면 꺼짐 방지를 지원하지 않습니다. 화면이 꺼지면 알림이 늦을 수 있습니다.'}
+        </p>
+      </div>
 
       <Modal
         open={confirmReset}

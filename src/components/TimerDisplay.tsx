@@ -18,33 +18,39 @@ export function TimerDisplay({ phase, remainingMs, running }: Props) {
   const countdown = running && seconds > 0 && seconds <= 3;
 
   return (
-    <div className="dial">
-      <svg className="dial__ring" viewBox="0 0 200 200" aria-hidden="true">
-        <circle className="dial__track" cx="100" cy="100" r={RADIUS} />
-        <circle
-          className="dial__progress"
-          cx="100"
-          cy="100"
-          r={RADIUS}
-          strokeDasharray={CIRCUMFERENCE}
-          strokeDashoffset={CIRCUMFERENCE * elapsed}
-        />
-      </svg>
-      <div className="dial__center">
-        {/* 색만으로 구분하지 않도록 단계명을 항상 함께 보여준다 */}
-        <span className="dial__phase">{PHASE_LABELS[phase.type]}</span>
-        <span
-          className={`dial__time${countdown ? ' dial__time--countdown' : ''}`}
-          key={countdown ? seconds : 'steady'}
-          aria-hidden="true"
-        >
-          {formatMMSS(remainingMs / 1000)}
-        </span>
+    <>
+      <div className="dial">
+        <svg className="dial__ring" viewBox="0 0 200 200" aria-hidden="true">
+          <circle className="dial__track" cx="100" cy="100" r={RADIUS} />
+          <circle
+            className="dial__progress"
+            cx="100"
+            cy="100"
+            r={RADIUS}
+            strokeDasharray={CIRCUMFERENCE}
+            strokeDashoffset={CIRCUMFERENCE * elapsed}
+          />
+        </svg>
+        <div className="dial__center">
+          {/* 색만으로 구분하지 않도록 단계명을 항상 함께 보여준다 */}
+          <span className="dial__phase">{PHASE_LABELS[phase.type]}</span>
+          <span
+            className={`dial__time${countdown ? ' dial__time--countdown' : ''}`}
+            key={countdown ? seconds : 'steady'}
+            aria-hidden="true"
+          >
+            {formatMMSS(remainingMs / 1000)}
+          </span>
+        </div>
+        {/* 매초 읽으면 방해가 되므로 단계가 바뀔 때만 알린다 */}
+        <p className="sr-only" aria-live="polite">
+          {PHASE_LABELS[phase.type]} {phase.durationSec}초
+        </p>
       </div>
-      {/* 매초 읽으면 방해가 되므로 단계가 바뀔 때만 알린다 */}
-      <p className="sr-only" aria-live="polite">
-        {PHASE_LABELS[phase.type]} {phase.durationSec}초
-      </p>
-    </div>
+      {/* 가로 모드에서 링 대신 쓰는 진행 바. 다이얼은 진입 모션에 transform을 쓰므로 밖에 둔다 */}
+      <div className="bar" aria-hidden="true">
+        <div className="bar__fill" style={{ transform: `scaleX(${elapsed})` }} />
+      </div>
+    </>
   );
 }

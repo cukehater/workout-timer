@@ -122,6 +122,37 @@ describe('SKIP', () => {
   });
 });
 
+describe('PREV', () => {
+  it('직전 단계 처음으로 돌아간다', () => {
+    let s = start([work(10), rest(5)], [3], 0);
+    s = tick(s, 12000); // rest 진행 중, 3초 beep 울림
+    s = timerReducer(s, { type: 'PREV', now: 12000 });
+    expect(s.index).toBe(0);
+    expect(s.status).toBe('running');
+    expect(s.phaseEndsAt).toBe(22000);
+    expect(s.remainingMs).toBe(10000);
+    expect(s.firedBeeps).toEqual([]);
+  });
+
+  it('paused에서 돌아가면 paused를 유지한다', () => {
+    let s = start([work(10), rest(5)], [], 0);
+    s = timerReducer(s, { type: 'SKIP', now: 1000 });
+    s = timerReducer(s, { type: 'PAUSE', now: 2000 });
+    s = timerReducer(s, { type: 'PREV', now: 2000 });
+    expect(s.index).toBe(0);
+    expect(s.status).toBe('paused');
+    expect(s.remainingMs).toBe(10000);
+  });
+
+  it('첫 단계·idle·finished에서는 무시한다', () => {
+    const first = start([work(10), rest(5)], [], 0);
+    expect(timerReducer(first, { type: 'PREV', now: 1000 })).toBe(first);
+    expect(timerReducer(INITIAL_STATE, { type: 'PREV', now: 0 })).toBe(INITIAL_STATE);
+    const done = tick(first, 99999);
+    expect(timerReducer(done, { type: 'PREV', now: 99999 })).toBe(done);
+  });
+});
+
 describe('RESET', () => {
   it('어느 상태에서든 idle로 돌아간다', () => {
     let s = start([work(10)], [3], 0);
