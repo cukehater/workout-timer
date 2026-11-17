@@ -276,13 +276,8 @@ Vitest만 사용한다. React Testing Library와 jsdom은 도입하지 않는다
 
 ## 11. 배포
 
-`main`에 push하면 GitHub Actions가 테스트 → 빌드 → GitHub Pages 배포를 수행한다. 결과 주소는 `https://cukehater.github.io/workout-timer/`.
+Vercel 프로젝트를 GitHub 저장소에 연결해 둔다. `main`에 push하면 Vercel이 빌드해 production에 배포하고, PR마다 프리뷰 URL을 만든다. 설정 파일(`vercel.json`)은 두지 않는다. Vercel이 Vite를 감지해 `npm run build`로 빌드하고 `dist`를 서비스한다.
 
-- `vite.config.ts`의 `base: '/workout-timer/'` — 프로젝트 페이지는 저장소명 하위 경로로 서비스되므로 asset 경로가 여기에 맞아야 한다. 개발 서버 주소도 같은 경로로 바뀐다.
-- `.github/workflows/deploy.yml` — `build` 잡이 `npm ci` → `npm test -- --run` → `npm run build` → 산출물 업로드, `deploy` 잡이 Pages에 배포. 테스트나 타입 검사가 실패하면 배포되지 않는다(`build` 스크립트에 `tsc --noEmit` 포함).
-- `test` 스크립트가 watch 모드(`vitest`)라 CI에서는 `--run`을 명시한다.
-- `concurrency: pages`로 배포가 겹치지 않게 한다.
-- `actions/configure-pages`는 쓰지 않는다. base를 직접 지정했고 `enablement`는 `repo` 스코프 PAT을 요구하는데, `deploy-pages`는 이것 없이 동작한다.
+- 루트 경로(`/`)에서 서비스하므로 `vite.config.ts`에 `base`를 두지 않는다.
+- CI 테스트는 돌리지 않는다. 테스트는 로컬에서 `npm test`로 확인한다. 타입 검사는 `build` 스크립트의 `tsc --noEmit`이 맡아 실패하면 배포되지 않는다.
 - 라우터가 없어 404 폴백 처리는 불필요하다.
-
-**한 번만 필요한 수동 설정**: 저장소 Settings → Pages → Source를 "GitHub Actions"로 지정한다. 이 설정 전에 push하면 `deploy` 잡이 실패하며, 설정 후 Actions 탭에서 재실행하면 된다(`workflow_dispatch` 포함).

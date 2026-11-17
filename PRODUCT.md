@@ -23,7 +23,7 @@ web
 - 실내, 조명 조건 다양. 세로·가로 모드 모두 사용(모바일·태블릿 우선, 데스크톱 지원).
 - 운동 중 상호작용은 사실상 없음. 조작은 시작 전(설정)과 중단 시(일시정지·건너뛰기·리셋)에만.
 - 화면 꺼짐 방지는 Screen Wake Lock API, 미지원 브라우저는 안내 문구로 대체.
-- 배포: GitHub Pages(`/workout-timer/` 하위 경로), `main` push 시 자동 배포.
+- 배포: Vercel(루트 경로), GitHub 저장소 연동으로 `main` push 시 자동 배포.
 
 ## Capabilities and Constraints
 
